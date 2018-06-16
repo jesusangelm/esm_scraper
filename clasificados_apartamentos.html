@@ -1,0 +1,709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+		<!-- Schema.org markup for Google+ -->
+		<meta itemprop="name" content="El Sol de Margarita">
+		<meta itemprop="description" content="El Sol de Margarita - El Periódico de la Verdad">
+		<meta itemprop="image" content="http://www.elsoldemargarita.com.ve/img/logo_sol.jpg">
+
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@elsoldmargarita">
+		<meta name="twitter:creator" content="@elsoldmargarita">
+		<meta name="twitter:title" content="El Sol de Margarita">
+		<meta name="twitter:description" content="El Periódico de la Verdad.">
+		<meta name="twitter:image" content="http://www.elsoldemargarita.com.ve/img/logo_sol.jpg">
+
+	<title>.: El Sol de Margarita :.</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link href="http://www.elsoldemargarita.com.ve/clasificados/index/type:icon" type="application/rss+xml" rel="alternate" title="/favicon.ico">			<script type="text/javascript" async="" src=":%20El%20Sol%20de%20Margarita%20:_files/ga.js"></script><script src=":%20El%20Sol%20de%20Margarita%20:_files/jquery.js"></script>
+		<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-27553016-1']);
+		_gaq.push(['_setDomainName', 'elsoldemargarita.com.ve']);
+		_gaq.push(['_setAllowLinker', true]);
+		_gaq.push(['_trackPageview']);
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+
+
+<script type="text/javascript">
+var NS4 = true; //(document.layers)?true:false;
+var IE4 = false; //(document.all)?true:false;
+var ppromt = '';
+var bydefault = '';
+	function jumpBusqueda(){
+		var string = $("#busqueda").val();
+		location.href = ('/posts/busqueda/' + string);
+		event.preventDefault();
+	}
+
+	function jumpSection() {
+		var url=("/clasificados/index");
+		var section = $("#fsection").val();
+		var search = $("#fsearch").val();
+		var subsection_ = $("#fsubsection").val();
+		var res = subsection_.split(';;');
+		var subsection = res[0];
+
+		if (search != '')
+			fsearch = '/fsearch:' + search;
+		else
+			fsearch = '';
+
+		if (section != 0)
+			fsection = '/fsection:' + section;
+		else
+			fsection = '';
+
+		if (subsection != 0)
+			fsubsection = '/fsubsection:' + subsection;
+		else
+			fsubsection = '';
+		
+		newLocation = fsection + fsubsection + fsearch;
+		location.href = (url+newLocation);
+		event.preventDefault();
+		};
+	
+function _struct(child,childcaption,parent){
+this.child = child;
+this.childcaption = childcaption;
+this.parent	= parent;
+}
+function limitText(limitField, limitNum) {
+    if (limitField.value.length > limitNum) {
+        limitField.value = limitField.value.substring(0, limitNum);
+    } 
+}
+function _addobject(child,childcaption,parent){
+var obj = new _struct();
+obj.child = child;
+obj.childcaption = childcaption;
+obj.parent = parent;
+return(obj);
+}
+function isEntry(child,parent){
+	if(child.length > 0 ){		
+		for(var i=0;i<this.length;i++)
+			if(this.items[i].child == child)
+				return true;			
+	}
+	return false;
+}
+function insertEntry(child,childcaption,parent){
+	if(child.length > 0 ){		
+		for(var i=0;i<this.length;i++)
+			if(this.items[i].child == child)
+				return;			
+		this.items[this.length++] = _addobject(child,childcaption,parent);		
+	}
+}
+function add_option(oSelect,pprompt,bydefault){
+	var new_option = ' ';
+	new_option = prompt (ppromt,bydefault);
+	if ( new_option == null ) {
+		//donothing
+	} else {
+		if ( new_option.length > 2) {
+			new_option = new_option.toUpperCase();
+			elOption = new Option();
+			//now IE and NS have a different way to handle object creation.
+			if(IE4){						
+				elOption.value = new_option + ' selected';
+				elOption.text = new_option;
+				eval(document.formparent.elements[oSelect]).options[0] = elOption
+				eval(document.formparent.elements[oSelect]).selectedIndex = 0;
+			}else if(NS4){				
+				elOption.value = new_option  + ' selected';
+				elOption.text = new_option;
+				document.all.item(oSelect).options.add(elOption,0)					
+				document.all.item(oSelect).selectedIndex  = 0;
+			}						
+			delete(elOption);
+		}
+	}
+}
+
+function OptionCollection(){
+this.length=0;
+this.items = new Object();
+this.Add=insertEntry
+}
+
+function clearSelect(oSelect){
+	var iCount=0;
+	if(!oSelect) return;
+	iCount = oSelect.options.length;
+	for(var i=0;i<iCount;i++){
+		if(IE4)
+			oSelect.options.remove(0);
+		else if(NS4)
+			oSelect.options[0]=null;
+	}
+}
+function addOptions(oSelect,olist,parent){
+	var elOption;
+	var idxSelect=0;
+	var found=false;
+	if((!olist) || (!oSelect)) return;
+	clearSelect(oSelect);	
+	  	elBlankOption = new Option();
+	  	elBlankOption.text = "Todos";
+	  	elBlankOption.value = "";
+	  if (NS4) oSelect.options[idxSelect] = elBlankOption
+	  else if(IE4) oSelect.options.add(elBlankOption,idxSelect)
+	  idxSelect++;
+	for(var i=0;i<olist.length;i++){		
+		if(olist.items[i].parent == parent){									
+			found = true;
+			elOption = new Option();
+			//now IE and NS have a different way to handle object creation.
+			if(NS4){
+				elOption.value = olist.items[i].child
+				elOption.text = olist.items[i].childcaption
+				oSelect.options[idxSelect] = elOption				
+			}else if(IE4){				
+				elOption.value = olist.items[i].child
+				elOption.text = olist.items[i].childcaption
+				oSelect.options.add(elOption,idxSelect)					
+			}						
+			idxSelect++;
+			delete(elOption);
+		}			
+	}	
+	if (!found)
+	{
+	  	elBlankOption = new Option();
+	  	elBlankOption.text = "Todas";
+	  	elBlankOption.value = "";
+	  	idxSelect++;
+	  if(NS4) oSelect.options[0] = elBlankOption
+	  else if(IE4) oSelect.options.add(elBlankOption,0)
+	}
+}
+
+function clearOptions(szSelect,szForm){
+if(szSelect.length <= 0 || szForm.length <=0)
+	alert("error:clearOption must pass arguments");	
+if(IE4)
+clearSelect(document.all.item(szSelect));
+else if(NS4)
+clearSelect(eval('document.' + szForm + '.elements["' + szSelect + '"]'));
+}
+
+function listAllOptions(szSelect,szForm,olist){
+	var elOption;
+	var idxSelect=0;
+	var oSelect = new Object();
+	if(!olist)return;			
+	if(IE4)
+		 oSelect = document.all.item(szSelect);
+	else if(NS4)
+		oSelect = eval('document.' + szForm + '.' + szSelect);
+	if(!oSelect)return;			
+	clearSelect(oSelect);
+	for(var i=0;i<olist.length;i++){							
+		elOption = new Option();
+		if(NS4){						
+			elOption.value = olist.items[i].child
+			elOption.text = olist.items[i].childcaption
+			oSelect.options[idxSelect] = elOption				
+		}else if(IE4){				
+			elOption.value = olist.items[i].child
+			elOption.text = olist.items[i].childcaption
+			oSelect.options.add(elOption,idxSelect)					
+		}						
+		idxSelect++;
+		delete(elOption);					
+	}	
+}
+
+function UpdateSelect(szSelect,szForm,szParent,olist){
+if(IE4)
+addOptions(document.all.item(szSelect),olist,szParent);
+else if(NS4)
+addOptions(eval('document.' + szForm + '.elements["' + szSelect + '"]'),olist,szParent);
+}
+
+var oSubSection = new OptionCollection();
+var oSection = new OptionCollection();
+	oSection.Add("1", "1", "1");
+oSubSection.Add("1A;;1", "1A HASTA 50.000", "1");
+oSubSection.Add("1B;;1", "1B HASTA 70.000", "1");
+oSubSection.Add("1C;;1", "1C MAS DE 70.000", "1");
+oSection.Add("10", "10", "10");
+oSection.Add("11", "11", "11");
+oSubSection.Add("11A;;11", "11A HASTA 600 M2", "11");
+oSubSection.Add("11B;;11", "11B HASTA 800 M2", "11");
+oSubSection.Add("11C;;11", "11C HASTA 1.500 M2", "11");
+oSubSection.Add("11D;;11", "11D HASTA 3.000 M2", "11");
+oSubSection.Add("11E;;11", "11E HASTA 10.000 M2", "11");
+oSubSection.Add("11F;;11", "11F MAS DE 10.000 M2", "11");
+oSection.Add("12", "12", "12");
+oSubSection.Add("12A;;12", "12A ALQUILER", "12");
+oSubSection.Add("12B;;12", "12B VENTAS", "12");
+oSubSection.Add("12C;;12", "12C FONDO DE COMERCIO", "12");
+oSubSection.Add("12D;;12", "12D SOLICITUD DE SOCIO", "12");
+oSection.Add("13", "13", "13");
+oSubSection.Add("13A;;13", "13A ALQUILER", "13");
+oSubSection.Add("13B;;13", "13B VENTA", "13");
+oSection.Add("14", "14", "14");
+oSubSection.Add("14A;;14", "14A PARTICULARES", "14");
+oSubSection.Add("14B;;14", "14B RUSTICOS", "14");
+oSubSection.Add("14C;;14", "14C TAXIS Y AUTOBUSES", "14");
+oSubSection.Add("14D;;14", "14D CARGA (CAVAS/CAMIONES)", "14");
+oSubSection.Add("14E;;14", "14E MOTOS", "14");
+oSubSection.Add("14F;;14", "14F EMBARCACIONES", "14");
+oSubSection.Add("14G;;14", "14G ACCESORIOS", "14");
+oSection.Add("15", "15", "15");
+oSubSection.Add("15A;;15", "15A OBJETOS DIVERSOS", "15");
+oSubSection.Add("15B;;15", "15B SERVICIOS PROFESIONALES", "15");
+oSubSection.Add("15C;;15", "15C CURSOS", "15");
+oSubSection.Add("15D;;15", "15D VIAJES Y MUDANZAS", "15");
+oSubSection.Add("15E;;15", "15E BELLEZA Y ESTETICA", "15");
+oSubSection.Add("15F;;15", "15F ARTE Y ANTIGUEDADES", "15");
+oSection.Add("16", "16", "16");
+oSubSection.Add("16A;;16", "16A OFERTA DE SERVICIOS", "16");
+oSubSection.Add("16B;;16", "16B SOLICITUD SERVICIOS DOMESTICOS", "16");
+oSubSection.Add("16C;;16", "16C SOLICITUD DE PROFESIONALES", "16");
+oSubSection.Add("16D;;16", "16D SOLICITUD DE PERSONAL", "16");
+oSection.Add("17", "17", "17");
+oSubSection.Add("17A;;17", "17A VENTA DE EQUIPOS", "17");
+oSubSection.Add("17B;;17", "17B REPARACION DE EQUIPOS", "17");
+oSubSection.Add("17C;;17", "17C CURSOS", "17");
+oSubSection.Add("17D;;17", "17D OTROS SERVICIOS", "17");
+oSection.Add("18", "18", "18");
+oSubSection.Add("18A;;18", "18A SERVICIOS DIVERSOS", "18");
+oSubSection.Add("18B;;18", "18B MANTENIMIENTO", "18");
+oSubSection.Add("18C;;18", "18C ELECTRICIDAD", "18");
+oSubSection.Add("18D;;18", "18D CONSTRUCCION, ALBAÑILERIA Y PLOMERIA", "18");
+oSubSection.Add("18E;;18", "18E REFRIGERACION", "18");
+oSection.Add("19", "19", "19");
+oSubSection.Add("19A;;19", "19A INSTITUTOS", "19");
+oSubSection.Add("19B;;19", "19B CURSOS", "19");
+oSubSection.Add("19C;;19", "19C GUARDERIAS", "19");
+oSubSection.Add("19D;;19", "19D TRANSPORTE ESCOLAR", "19");
+oSubSection.Add("19E;;19", "19E RECREACION", "19");
+oSection.Add("2", "2", "2");
+oSubSection.Add("2A;;2", "2A HASTA 7.000.000", "2");
+oSubSection.Add("2B;;2", "2B HASTA 15.000.000", "2");
+oSubSection.Add("2C;;2", "2C MAS DE 15.000.000", "2");
+oSection.Add("20", "20", "20");
+oSection.Add("21", "21", "21");
+oSection.Add("22", "22", "22");
+oSection.Add("23", "23", "23");
+oSubSection.Add("23A;;23", "23A COMPRA Y VENTA", "23");
+oSubSection.Add("23B;;23", "23B SERVICIOS", "23");
+oSection.Add("24", "24", "24");
+oSection.Add("25", "25", "25");
+oSection.Add("3", "3", "3");
+oSection.Add("4", "4", "4");
+oSubSection.Add("4A;;4", "4A HASTA 50.000", "4");
+oSubSection.Add("4B;;4", "4B HASTA 70.000", "4");
+oSubSection.Add("4C;;4", "4C MAS DE 70.000", "4");
+oSection.Add("5", "5", "5");
+oSubSection.Add("5A;;5", "5A HASTA 7.000.000", "5");
+oSubSection.Add("5B;;5", "5B HASTA 15.000.000", "5");
+oSubSection.Add("5C;;5", "5C MAS DE 15.000.000", "5");
+oSection.Add("6", "6", "6");
+oSection.Add("7", "7", "7");
+oSubSection.Add("7A;;7", "7A SOLICITUD INMUEBLES", "7");
+oSection.Add("8", "8", "8");
+oSubSection.Add("8A;;8", "8A ALQUILER", "8");
+oSubSection.Add("8B;;8", "8B VENTA", "8");
+oSection.Add("9", "9", "9");
+</script>
+<link rel="stylesheet" type="text/css" href=":%20El%20Sol%20de%20Margarita%20:_files/unique2.css"><link href="http://www.elsoldemargarita.com.ve/favicon.ico" type="image/x-icon" rel="icon"><link href="http://www.elsoldemargarita.com.ve/favicon.ico" type="image/x-icon" rel="shortcut icon"><script type="text/javascript" src=":%20El%20Sol%20de%20Margarita%20:_files/unique.js"></script>	
+		<style type="text/css">
+			#dhtmltooltip{
+				position: absolute;
+				width: 320px;
+				border:solid 2px #cbcbcb;
+				padding: 20px;
+				background: #ffffff;
+				filter: alpha(opacity=98);
+			    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=98);
+			    opacity:0.98;
+			   -moz-opacity: 0.98;
+				visibility: hidden;
+				z-index: 100;
+				font-family: Helvetica, Verdana, arial;
+				font-size:13px;
+			}
+		</style>
+	</head>
+		<body>
+		<div id="container">
+											<div id="dhtmltooltip"></div>
+            <script type="text/javascript" src=":%20El%20Sol%20de%20Margarita%20:_files/addthis_widget.js"></script>
+			<script type="text/javascript">
+				var offsetxpoint=-60 //Customize x offset of tooltip
+				var offsetypoint=20 //Customize y offset of tooltip
+				var ie=document.all
+				var ns6=document.getElementById && !document.all
+				var enabletip=false
+				if (ie||ns6)
+					var tipobj=document.all? document.all["dhtmltooltip"] : document.getElementById? document.getElementById("dhtmltooltip") : ""
+				function ietruebody() {
+					return (document.compatMode && document.compatMode!="BackCompat")? document.documentElement : document.body
+				}
+				function ddrivetip(thetext, thecolor, thewidth){
+					if (ns6||ie){
+						if (typeof thewidth!="undefined") tipobj.style.width=thewidth+"px"
+						if (typeof thecolor!="undefined" && thecolor!="") tipobj.style.backgroundColor=thecolor
+						tipobj.innerHTML=thetext
+						enabletip=true
+						return false
+					}
+				}
+				function positiontip(e){
+					if (enabletip){
+						var curY=(ns6)?e.pageY : event.y+ietruebody().scrollTop;
+						var curX=390;
+						var rightedge=ie&&!window.opera? ietruebody().clientWidth-event.clientX-offsetxpoint : window.innerWidth-e.clientX-offsetxpoint-20
+						var bottomedge=ie&&!window.opera? ietruebody().clientHeight-event.clientY-offsetypoint : window.innerHeight-e.clientY-offsetypoint-20
+						var leftedge=(offsetxpoint<0)? offsetxpoint*(-1) : -1000
+						if (rightedge<tipobj.offsetWidth)
+						tipobj.style.left=ie? ietruebody().scrollLeft+event.clientX-tipobj.offsetWidth+"px" : window.pageXOffset+e.clientX-tipobj.offsetWidth+"px"
+						else if (curX<leftedge)
+						tipobj.style.left="5px"
+						else
+						tipobj.style.left=curX+offsetxpoint+"px"
+						if (bottomedge<tipobj.offsetHeight)
+						tipobj.style.top=ie? ietruebody().scrollTop+event.clientY-tipobj.offsetHeight-offsetypoint+"px" : window.pageYOffset+e.clientY-tipobj.offsetHeight-offsetypoint+"px"
+						else
+						tipobj.style.top=curY+offsetypoint+"px"
+						tipobj.style.left='210px';
+						tipobj.style.visibility="visible"
+					}
+				}
+				function hideddrivetip(){
+					if (ns6||ie){
+						enabletip=false
+						tipobj.style.visibility="hidden"
+						tipobj.style.left="-1000px"
+						tipobj.style.backgroundColor=''
+					tipobj.style.width=''
+					}
+				}
+				document.onclick=positiontip
+			</script>
+			<div id="header2" class="header2">
+				<div id="flexslider" class="flexslider" style="overflow: hidden;">
+				  	<div>
+				  		<ul class="slides" style="width: 0px; margin-left: 0px;">
+				  							  		</ul>
+					</div>
+			  	</div> <span id="flexsliderPrev"><a href="javascript:void(0);"></a></span> <span id="flexsliderNext"><a href="javascript:void(0);"></a></span>
+			</div>
+			<br>
+			<br>
+			<hr>
+			
+<!--   SubMenu de la parte Superior -
+
+	<div style="margin-left:auto;margin-right:auto;width:auto;">
+				<ul class="main-menu" style="border-bottom-color:#D1671B; border-bottom-style:solid; border-bottom-width:2px;background-color:#FFF;padding-left:8px;padding-right:2px;"> 
+			<li><a style=";background-color:#FFF;color:#D1671B;border-color:#D1671B" href="http://elsoldemargarita.com.ve/posts/seccion/54/Ahora%20es%20cuando">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ahora es Cuando&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+	   <li ><a style="background-color:#FFF;color:#D1671B;border-color:#D1671B" href="http://www.elsoldemargarita.com.ve/posts/seccion/41/Rayitos%20de%20Sol">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rayitos de Sol&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+	         <li><a style="background-color:#FFF;color:#D1671B;border-color:#D1671B" href="http://www.elsoldemargarita.com.ve/posts/seccion/61/Entre%20Coche%20y%20Cubagua">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Entre Coche y Cubagua&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+<li><a style="background-color:#FFF;color:#D1671B;border-color:#D1671B" href="http://www.elsoldemargarita.com.ve/posts/seccion/57/Tierra%20Asoleada">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     Tierra Asoleada  &nbsp&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+	 <li><a style="background-color:#FFF;color:#D1671B;border-color:#D1671B" href="http://elsoldemargarita.com.ve/posts/seccion/52/Lo%20%2B%20le%C3%ADdo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lo Más Leído&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li></ul>
+</div>
+
+-->	
+
+			<div class="topHeader">
+				<div class="topHeaderFirstDiv">
+					<a href="http://www.comerciomargarita.com.ve/" target="_blank"><img src=":%20El%20Sol%20de%20Margarita%20:_files/otilca.jpg"></a>				</div>
+				<div class="topHeaderSocNetDiv">
+	                <a href="http://twitter.com/@elsoldmargarita" target="_blank"><img src=":%20El%20Sol%20de%20Margarita%20:_files/btnTT.png"></a>
+	                <a href="https://www.facebook.com/soldemargarita" target="_blank"><img src=":%20El%20Sol%20de%20Margarita%20:_files/btnFF.png"></a>
+	                <a href="http://www.youtube.com/user/ElSoldeMargarita" target="_blank"><img src=":%20El%20Sol%20de%20Margarita%20:_files/btnYT.png"></a>
+					<a href="http://instagram.com/soldemargarita?ref=badge" target="_blank"><img src=":%20El%20Sol%20de%20Margarita%20:_files/btnIG.png"></a>					
+				</div>
+				<div class="topHeaderLogoDiv">
+					<div>
+						<a href="http://www.elsoldemargarita.com.ve/"><img src=":%20El%20Sol%20de%20Margarita%20:_files/logo_sol.jpg" style="width:256px;height:152px;"></a>
+					</div>
+				</div>
+				<div class="topHeaderNewsPaperFrontPageDiv">
+					<div>
+						<p>Porlamar<br>16 de junio de 2018</p>					</div>
+					<div>
+					<a href="#" id="linkPortada"><img src=":%20El%20Sol%20de%20Margarita%20:_files/portada_rotada.jpg" style="height:110px;vertical-align:bottom;"></a>					</div>
+				</div>
+				<div class="topHeaderLastDiv">
+					<a href="http://www.otilca.org/" target="_blank"><img src=":%20El%20Sol%20de%20Margarita%20:_files/otilca_002.jpg"></a>				</div> 
+			</div>
+			<hr><hr><hr>
+			<div style="margin-left:auto;margin-right:auto;width:auto;">
+				<ul class="main-menu">
+					<li><a href="http://www.elsoldemargarita.com.ve/">Inicio</a></li><li><a href="http://www.elsoldemargarita.com.ve/posts/seccion/4/Locales">Locales</a></li><li><a href="http://www.elsoldemargarita.com.ve/posts/seccion/5/Sucesos">Sucesos</a></li><li><a href="http://www.elsoldemargarita.com.ve/posts/seccion/3/Afici%C3%B3n%20Deportiva">Afición Deportiva</a></li><li><a href="http://www.elsoldemargarita.com.ve/posts/seccion/1/Nacionales">Nacionales</a></li><li><a href="http://www.elsoldemargarita.com.ve/posts/seccion/9/Internacionales">Internacionales</a></li><li><a href="http://www.elsoldemargarita.com.ve/posts/seccion/30/Gente%20Feliz">Gente Feliz</a></li><li><a href="http://www.elsoldemargarita.com.ve/posts/seccion/38/Vida%20de%20Hoy">Vida de Hoy</a></li><li><a href="http://www.elsoldemargarita.com.ve/posts/seccion/39/Juan%20Griego">Juan Griego</a></li><li><a href="http://www.elsoldemargarita.com.ve/posts/seccion/7/Opini%C3%B3n">Opinión</a></li>				</ul>
+			</div>
+			<hr>
+			<div id="highlights-navigation">
+				<ul>
+					<li><a href="http://www.elsoldemargarita.com.ve/" style="color:#FFF;">Destacados</a></li>
+					<li><a href="http://www.elsoldemargarita.com.ve/posts/post/id:209043/Pese-a-los-costos-los-turistas-siguen-llegando-a-Nueva-Esparta">Pista Noticias</a></li><li><a href="http://www.elsoldemargarita.com.ve/posts/post/id:209035/Apresada-mujer-por-agredir-f%C3%ADsicamente-a-hombre">Apresada mujer</a></li><li><a href="http://www.elsoldemargarita.com.ve/posts/post/id:209046/Tuborenses-piden-desenlace-positivo-y-apego-a-las-leyes-en-el-municipio">Tuborenses</a></li><li><a href="http://www.elsoldemargarita.com.ve/posts/post/id:209030/Rivas-pedir%C3%A1-mudar-sede-ministerial-a-la-Isla">Dante Rivas ministro</a></li>				</ul>
+			</div>
+				<div style="display:inline;height:30px;">
+					<table>
+						<tbody><tr>
+							<td><img src=":%20El%20Sol%20de%20Margarita%20:_files/23.gif" style="display:inline;width:26px;height:26px;border:0;"></td>
+							<td><p style="display:inline;vertical-align:top;"><strong>EL TIEMPO</strong> EN MARGARITA <strong>26°C</strong></p></td>
+						</tr>
+					</tbody></table>
+				</div>
+
+		<hr><br><hr>
+
+<!-- INDEX VIEW -->
+	<table style="display:inline;width:1024px;">
+		<tbody><tr>
+			<!-- BANNER HEADER SECCION CLASIFICADOS -->
+			<td colspan="3">
+				   
+			</td>
+		</tr>
+		<tr>
+			<!-- BANNER DE MAPA INTERACTIVO -->
+			<td colspan="3">
+				   
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<table style="display:block;width:680px;margin-left:auto;margin-right:auto;">
+					<tbody><tr>
+						<td colspan="2">
+							<!-- CLASIFICADO SUPERIOR 1  -->
+													</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<!-- CLASIFICADO SUPERIOR 1  -->
+													</td>
+					</tr>
+					<tr>
+						<td>
+							<!-- CLASIFICADO SUPERIOR LADO IZQUERDO  -->
+							<div z-index="0"><div class="BannerSlide" style="overflow:hidden;width:100%"><ul><li id="li0" style="width: 100%;"><a href="http://www.instagram.com/inmoproz/?hl=es-la" target="_blank"><img src=":%20El%20Sol%20de%20Margarita%20:_files/BANNER.gif" style="width:100%;"></a></li></ul></div></div><hr>						</td>
+						<td>
+							<!-- CLASIFICADO SUPERIOR LADO DERECHO  -->
+							<div z-index="0"><div class="BannerSlide" style="overflow:hidden;width:100%"><ul><li id="li0" style="width: 100%;"><a href="http://www.instagram.com/inmoproz/?hl=es-la" target="_blank"><img src=":%20El%20Sol%20de%20Margarita%20:_files/INMOPROZ.jpg" style="width:100%;"></a></li></ul></div></div><hr>						</td>
+					</tr>
+				</tbody></table>
+			</td>
+			<td rowspan="3" style="vertical-align:top;">
+				<!-- TERCERA COLUMNA -->
+				<div class="thirdColumn">
+					<table style="display:inline;width:324px;">
+						<tbody><tr>
+							<td>
+								<!-- SUPER CLASIFICADO LATERAL 1 - LIBRE ALTURA  -->
+								<div z-index="0"><div class="BannerSlide" style="overflow:hidden;width:100%;max-height:none"><ul><li id="li0" style="width: 100%;"><a href="http://www.instagram.com/inmoproz/?hl=es-la" target="_blank"><img src=":%20El%20Sol%20de%20Margarita%20:_files/300X250INMOPROZ-1.gif" style="width:100%;"></a></li></ul></div></div><hr>								<hr>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<!-- SUPER CLASIFICADO LATERAL 2 - LIBRE ALTURA  -->
+																<hr>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<!-- SUPER CLASIFICADO LATERAL 3 - LIBRE ALTURA  -->
+								<div z-index="0"><div class="BannerSlide" style="overflow:hidden;width:100%;max-height:none"><ul><li id="li0" style="width: 0px;"><a href="http://" target="_blank"><img src=":%20El%20Sol%20de%20Margarita%20:_files/Deseas%252520publicar%252520tus%252520avisos%252520del%252520sol%252_003.jpg" style="width:100%;"></a></li><li id="li1" style="width: 100%;"><a href="http://" target="_blank"><img src=":%20El%20Sol%20de%20Margarita%20:_files/Deseas%252520publicar%252520tus%252520avisos%252520del%252520sol%252520d.jpg" style="width:100%;"></a></li><li id="li2"><a href="http://" target="_blank"><img src=":%20El%20Sol%20de%20Margarita%20:_files/Deseas%252520publicar%252520tus%252520avisos%252520del%252520sol%252_002.jpg" style="width:100%;"></a></li></ul></div></div><hr>								<hr>
+							</td>
+						</tr>
+						<tr>
+							<td>
+							    <!-- SUPER CLASIFICADO LATERAL 4 - LIBRE ALTURA  -->
+																<hr>
+							</td>
+						</tr>
+						<tr>
+							<td>
+							    <!-- SUPER CLASIFICADO LATERAL 5 - LIBRE ALTURA  -->
+																<hr>
+							</td>
+						</tr>
+						<tr>
+							<td>
+							<!-- SUPER CLASIFICADO LATERAL 6 - LIBRE ALTURA  -->
+																<hr>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<!-- SUPER CLASIFICADO LATERAL 7 - LIBRE ALTURA  -->
+															</td>
+						</tr>
+					</tbody></table>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td style="vertical-align:top;width:680px;">
+				<!-- MOSTRAR SECCIONES DE CLASIFICADOS Y BUSQUEDA -->
+				<form name="intro" action="http://www.elsoldemargarita.com.ve/site2/clasificados"><table><tbody><tr><td><img src=":%20El%20Sol%20de%20Margarita%20:_files/iconos-adorno.jpg"></td><td><select name="fsection" id="fsection" style="font-size:100%; width:300px;" onchange="javascript:UpdateSelect('fsubsection','intro',this.options[this.selectedIndex].value,oSubSection);" data-cip-id="jQuery342845639">
+<option value="0" selected="selected">Seleccione</option><option value="1">&nbsp;1 APARTAMENTOS (ALQUILER)
+</option><option value="10">&nbsp;10 TERRENOS (ALQUILER)
+</option><option value="11">&nbsp;11 TERRENOS (COMPRA/VENTA)
+</option><option value="12">&nbsp;12 LOCALES COMERCIALES
+</option><option value="13">&nbsp;13 HOTELES Y RESTAURANTES
+</option><option value="14">&nbsp;14 VEHICULOS (COMPRA/VENTA/ALQUILER)
+</option><option value="15">&nbsp;15 VARIOS
+</option><option value="16">&nbsp;16 TRABAJOS VARIOS
+</option><option value="17">&nbsp;17 COMPUTACION
+</option><option value="18">&nbsp;18 SERVICIOS TECNICOS
+</option><option value="19">&nbsp;19 SERVICIOS EDUCATIVOS
+</option><option value="2">&nbsp;2 APARTAMENTOS (VENTAS)
+</option><option value="20">&nbsp;20 MUSICA
+</option><option value="21">&nbsp;21 FIESTAS Y ESPECTACULOS
+</option><option value="22">&nbsp;22 TURISMO Y EXCURSIONES
+</option><option value="23">&nbsp;23 ANIMALES
+</option><option value="24">&nbsp;24 ESOTERISMO
+</option><option value="25">&nbsp;25 ULTIMA HORA
+</option><option value="3">&nbsp;3 APARTAMENTOS (VACACIONALES)
+</option><option value="4">&nbsp;4 CASAS (ALQUILER)
+</option><option value="5">&nbsp;5 CASAS (VENTAS)
+</option><option value="6">&nbsp;6 CASAS (VACACIONALES)
+</option><option value="7">&nbsp;7 INMUEBLES
+</option><option value="8">&nbsp;8 TOWNHOUSES
+</option><option value="9">&nbsp;9 HABITACIONES (ALQUILER)
+</option></select><br><select name="fsubsection" id="fsubsection" style="font-size:100%; width:300px;" data-cip-id="jQuery342845640">
+<option value="0" selected="selected">&nbsp;-</option></select><br><label for="fsearch">o Buscar </label><input name="fsearch" style="font-size:100%; width:180px;" id="fsearch" type="text"><input style="font-size:100%" onclick="javascript:event.preventDefault();javascript:jumpSection();" value="Buscar" type="submit"></td></tr></tbody></table></form>				<hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+				<div style="text-align:center;font-size:14px;">
+1 APARTAMENTOS (ALQUILER) 				</div>
+				<table style="font-size:12px;width:680px;color:#777;text-align:left;"><tbody><tr style="height:auto;width:680px;"><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;padding-bottom:10px;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>SERVICIOS INMOPROZ,</b>
+ c.a empresa responsable, nueva sede en nueva esparta, solicita 
+inmuebeles, para alquiler, temporal y fijos 0424-9372718 0424-9223944 
+instagram @inmoproz
+</div></td><td style="width:10px;"></td><td style="width:10px;border-left:1px solid #777;"></td><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;vertical-align:top;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>SERVICIOS INMOPROZ,</b>
+ c.a. Vende posada obra gris, 22habitaciones, proyectos con restaurant y
+ piscina, detrás del sambil, síguenos: @inmoproz 0424-9372718 
+0424-9223944
+</div></td><td style="width:10px;border-left:1px solid #FFF;"></td></tr><tr style="height:auto;width:680px;"><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;padding-bottom:10px;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>SERVICIOS INMOPROZ,</b>
+ c.avende apartamento de una (1) habitación, con dos (2) baños, edificio
+ 4 de mayo, síguenos en @inmoproz 0424-9372718 0424-9223944
+</div></td><td style="width:10px;"></td><td style="width:10px;border-left:1px solid #777;"></td><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;vertical-align:top;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>SERVICIOS INMOPROZ,</b>
+ c.aVende exclusivo terreno en Jorge coll de 928.5 mts2 con proyecto 
+aprobado, síguenos @inmoproz 0424-9372718 0424-9223944 0424-8619326
+</div></td><td style="width:10px;border-left:1px solid #FFF;"></td></tr><tr style="height:auto;width:680px;"><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;padding-bottom:10px;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>SERVICIOS INMOPROZ,C.AVENDE</b> apartamento de una habitación en edificio Guaiquerí, conjunto con piscina y área social 0424-9372718 instagram @inmoproz
+</div></td><td style="width:10px;"></td><td style="width:10px;border-left:1px solid #777;"></td><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;vertical-align:top;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>ALQUILO APARTAMENTO</b> en playa el angel, costa azul jorge coll desde 1h/2b hasta 3h/3b tambien quinta con piscina amoblada informacion 0414-8399262
+</div></td><td style="width:10px;border-left:1px solid #FFF;"></td></tr><tr style="height:auto;width:680px;"><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;padding-bottom:10px;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>SE ALQUILA</b>
+ townhouse 3 habitaciones 2 baños piscina 1 estacionaniento conpuesto 
+cerrado, playa el agua sector la mira 50.000 mensual informacion. 
+0426-2896460.
+</div></td><td style="width:10px;"></td><td style="width:10px;border-left:1px solid #777;"></td><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;vertical-align:top;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>ALQUILO FIJO</b>
+ anexos y apartamentos robles bs.10.000.000, bs.15.000.000, asuncion bs.
+ 10.000.000, bs.12.000.000, bs. 40.000.000, sambil bs. 80.000.000, 
+costazul bs. 120.000.000, la fuente bs. 45.000.0000. 0416-7990608.
+</div></td><td style="width:10px;border-left:1px solid #FFF;"></td></tr><tr style="height:auto;width:680px;"><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;padding-bottom:10px;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>BELLO APARTAMENTO</b>
+ fijo maximo 2/pers, av.4 de mayo porlamar, totalmente equipado, vista 
+panoramica 1/hab, 1/baño, estacionamiento, vigilancia, directv. 
+luisaarkd@hotmail.com 0412-2024997
+</div></td><td style="width:10px;"></td><td style="width:10px;border-left:1px solid #777;"></td><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;vertical-align:top;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>ALQUILO APARTAMENTO</b>
+ 2habt, 1baño, sala comedor, areas verdes, estacionamiento 25.000 
+mensual, 3 meses deposito el mes por adelantado 0426-3899542 
+0426-7890723
+</div></td><td style="width:10px;border-left:1px solid #FFF;"></td></tr><tr style="height:auto;width:680px;"><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;padding-bottom:10px;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>ALQUILO APARTAMENTOS,2/HAB,2/3,</b> equipados, conjunto cerrado, area social, , parque agua, juridico, P/B, A/A, P/E,el refugio, 0426-2994434
+</div></td><td style="width:10px;"></td><td style="width:10px;border-left:1px solid #777;"></td><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;vertical-align:top;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>ALQUILO BELLO</b>
+ apartamento en costa azul 2/has 2/baños aire/central tanque/agua full 
+equipado directv, wifi, piscina,lavadora 0424-8615717- 0414-7871283 
+contrato juridico.
+</div></td><td style="width:10px;border-left:1px solid #FFF;"></td></tr><tr style="height:auto;width:680px;"><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;padding-bottom:10px;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>SOLICITAMOS ALQUILER</b>
+ PROPIEDADES, Playa el Ángel, Costa Azul, clientes jurídicos. FRANQUICIA
+ INMOBILIARIA "SEVENIN",(0295)416-48-23 / 
+0424-880-79-04www.sevenin.com.ve ,
+</div></td><td style="width:10px;"></td><td style="width:10px;border-left:1px solid #777;"></td><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;vertical-align:top;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>ALQUILO APARTAMENTO</b>
+ equipados tipo/estudio, 2/ambientes, los robles sector/los olivos, 
+estacionamiento, parrillera, churuata, s/niño, s/mascota, conj/cerrado, 
+2/meses deposito, 1/mesadelantado 0414-8278656 0412-3532859
+</div></td><td style="width:10px;border-left:1px solid #FFF;"></td></tr><tr style="height:auto;width:680px;"><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;padding-bottom:10px;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>SE ALQUILA</b>
+ apartamento fijo, limpio y cuido apartamentos, busco apartamentos 
+alquiler playa el angel, costa azul, jorge coll. telefono 0414-8058851
+</div></td><td style="width:10px;"></td><td style="width:10px;border-left:1px solid #777;"></td><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;vertical-align:top;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>ALQUILO APARTAMENTO</b>
+ fijo y vacacionales costaazul 3/hab, playa elangel, 2/hab pampatar, 
+1/hab playa moreno, 4/hab full equipados, informacion 0414-0838953 
+0412-1516290
+</div></td><td style="width:10px;border-left:1px solid #FFF;"></td></tr><tr style="height:auto;width:680px;"><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;padding-bottom:10px;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>SE VENDE</b>
+ o alquila apartamento tipo estudio costa azul, piscina, 
+estacionamiento, a/a, cerca de la vela sin muebles. telefono. 
+0414-7908966
+</div></td><td style="width:10px;"></td><td style="width:10px;border-left:1px solid #777;"></td><td style="width:340px;vertical-align:top;"><div class="classified" style="width:100%;vertical-align:top;"><div style="text-align:center"><img src=":%20El%20Sol%20de%20Margarita%20:_files/nosol.jpg" style="margin-left:auto;margin-right:auto;"><hr></div><b>SE ALQUILAN</b>
+ apartamentos, casas, th, en las mejores zonas playaangel, costaazul, 
+jorgecoll, porlamar, pampatar, asuncion, comunicate asesoria 
+inmobiliaria 0426-5960774
+</div></td><td style="width:10px;border-left:1px solid #FFF;"></td></tr></tbody></table>
+				<hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+				<p style="text-align:center;">
+Página 1 de 2, mostrando 18 clasificados de un total de 24, desde 1, hasta 18				</p>
+				<div class="paging" style="text-align:center;">
+<span class="prev disabled">&lt; Anterior</span><span class="current">1</span><span><a href="http://www.elsoldemargarita.com.ve/clasificados/index/fsection:1/page:2">2</a></span><span class="next"><a href="http://www.elsoldemargarita.com.ve/clasificados/index/fsection:1/page:2" rel="next">Siguiente &gt;</a></span>				</div>
+
+			</td>
+
+		</tr>
+	</tbody></table>
+
+	<table style="display:inline;width:1024px;">
+		<tbody><tr>
+			<td>
+			    			    											</td>
+		</tr>
+	</tbody></table>
+<!-- INDEX VIEW -->
+<br>
+<br>
+<br>
+<div style="display:inline;">
+	<div style="width:692px;float:left;">
+		<img src=":%20El%20Sol%20de%20Margarita%20:_files/sdm.jpg">
+	</div>
+	<div>
+			<label for="busqueda"></label><input name="busqueda" style="font-size:100%; width:180px;" id="busqueda" data-cip-id="busqueda" type="text">
+			<input style="font-size:100%" onclick="javascript:event.preventDefault();javascript:jumpBusqueda();" value="Buscar" type="submit">
+	</div>
+</div>
+<hr style="width:100%;border-bottom:8px solid #4998B7;margin-bottom:4px;">
+<br>
+<div style="display:inline;">
+	<div style="width:792px;float:left;">
+		<img src=":%20El%20Sol%20de%20Margarita%20:_files/sdm2.jpg">
+	</div>
+	<div class="bottomFooterSocNetDiv">
+	                <a href="http://twitter.com/@elsoldmargarita" target="_blank"><img src=":%20El%20Sol%20de%20Margarita%20:_files/btnTT.png"></a>
+	                <a href="http://www.facebook.com/soldemargarita" target="_blank"><img src=":%20El%20Sol%20de%20Margarita%20:_files/btnFF.png"></a>
+	                <a href="http://www.youtube.com/user/ElSoldeMargarita" target="_blank"><img src=":%20El%20Sol%20de%20Margarita%20:_files/btnYT.png"></a>
+					<a href="http://instagram.com/soldemargarita?ref=badge" target="_blank"><img src=":%20El%20Sol%20de%20Margarita%20:_files/btnIG.png"></a>					
+	</div>
+</div>
+<hr>
+<br>
+<div style="display:block;text-align:center;" <div="" class="bottomNav">
+		<a href="http://www.elsoldemargarita.com.ve/posts/seccion/4">Locales</a> | <a href="http://www.elsoldemargarita.com.ve/posts/seccion/5">Sucesos</a> | <a href="http://www.elsoldemargarita.com.ve/posts/seccion/3">Afición Deportiva</a> | <a href="http://www.elsoldemargarita.com.ve/posts/seccion/1">Nacionales</a> | <a href="http://www.elsoldemargarita.com.ve/posts/seccion/9">Internacionales</a> | <a href="http://www.elsoldemargarita.com.ve/posts/seccion/30">Gente Feliz</a> | <a href="http://www.elsoldemargarita.com.ve/posts/seccion/38">Vida de Hoy</a> | <a href="http://www.elsoldemargarita.com.ve/posts/seccion/39">Juan Griego</a> | <a href="http://www.elsoldemargarita.com.ve/posts/seccion/7">Opinión</a>	</div>
+</div>
+<br>
+<br>
+<div style="display:block;text-align:center;" <div="" class="bottomNav">
+		<a href="http://www.elsoldemargarita.com.ve/posts/inst/id:127802/Nosotros">Nosotros</a> | <a href="http://www.elsoldemargarita.com.ve/posts/inst/id:127800/HISTORIA">HISTORIA</a> | <a href="http://www.elsoldemargarita.com.ve/posts/inst/id:127801/mision-vision-valores">MISIÓN, VISIÓN Y VALORES</a></div>
+
+<br>
+
+<br>
+<br>
+
+		<div id="portadaBIGGER" style="display:none;background:#666;border:solid 1px #000;padding:10px"><img src=":%20El%20Sol%20de%20Margarita%20:_files/portada.jpg" class="" id="" style="" width="405" height="500" border="0"></div>			<div id="footer">
+			</div>
+		
+			
+
+</body></html>
